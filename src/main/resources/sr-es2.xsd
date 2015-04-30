@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/sr-es2"
+	xmlns:tns="http://www.example.org/sr-es2" elementFormDefault="qualified">
+
+
+	<element name="DownloadSubDataReq">
+		<complexType>
+			<sequence>
+				<element name="ICCID" type="string" maxOccurs="1" minOccurs="1"></element>
+				<element name="EID" type="string" maxOccurs="1" minOccurs="1"></element>
+			</sequence>
+		</complexType>
+	</element>
+
+	<element name="DownloadSubDataRes">
+		<complexType>
+			<sequence>
+				<element name="ICCID" type="string" maxOccurs="1" minOccurs="1"></element>
+				<element name="EID" type="string" maxOccurs="1" minOccurs="1"></element>
+				<element name="ExecutionStatus" type="tns:ExecutionStatusType" maxOccurs="1" minOccurs="1"></element>
+			</sequence>
+		</complexType>
+	</element>
+
+
+	<complexType name="ExecutionStatusType">
+		<sequence>
+			<element name="StatusType" type="tns:StatusType" maxOccurs="1" minOccurs="1"></element>
+			<element name="ErrorStatus" type="tns:ErrorStatusType" maxOccurs="1" minOccurs="0"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="ErrorStatusType">
+		<sequence>
+			<element name="SubjectCode" type="string" maxOccurs="1" minOccurs="1"></element>
+			<element name="ReasonCode" type="string" maxOccurs="1" minOccurs="1"></element>
+			<element name="SubjectDescription" type="string" maxOccurs="1" minOccurs="1"></element>
+			<element name="ReasonDescription" type="string" maxOccurs="1" minOccurs="1"></element>
+		</sequence>
+	</complexType>
+
+	<simpleType name="StatusType">
+		<restriction base="string">
+			<enumeration value="SUCCESS" />
+			<enumeration value="FAILURE" />
+		</restriction>
+	</simpleType>
+</schema>
